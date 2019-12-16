@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>Search</nb-card-header>
+      <nb-card-body>
+        <form>
+          <div class="form-group">
+            <input type="text" nbInput fullWidth placeholder="Description" [(checked)]="Description">
+          </div>
+          <div class="form-group">
+            <nb-select fullWidth placeholder="Category" [(selected)]="Category">
+              <nb-option></nb-option>
+              <nb-option *ngFor="let category of CategoryItems" [value]="category.categoryID"> {{ category.name }}
+              </nb-option>
+            </nb-select>
+          </div>
+          <div class="form-group">
+            <nb-toggle [(checked)]="ShowInactives" labelPosition="left">Incluide Inactive Tasks</nb-toggle>
+          </div>
+          <button type="submit" nbButton status="danger" (click)="Search()">Search</button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

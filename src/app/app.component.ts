@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem } from '@nebular/theme';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { FEATURES_ITEMS } from './@core/data/featuresItems';
 import { Category } from './@core/models/category';
 import { CategoryService } from './@core/services/category.service';
 
@@ -12,39 +12,29 @@ import { CategoryService } from './@core/services/category.service';
 })
 export class AppComponent implements OnInit {
   title = 'TodoList';
-  menu: Observable<NbMenuItem[]> = new Observable<NbMenuItem[]>();
+  menu: NbMenuItem[] = [];
 
   constructor(private categoryService: CategoryService) {
 
   }
 
   ngOnInit(): void {
-    this.menu = this.categoryService.get().pipe(
+    this.categoryService.get().pipe(
       map((clients: Category[]) => clients.map(
         x => {
           let item = new NbMenuItem();
           item.title = x.name;
           item.icon = x.iconName;
-          item.link = `/pages/${x.categoryID}`;
+          item.link = `/pages/category/${x.categoryID}`;
           return item;
         }
-      ));
+      ))
+    ).subscribe(
+      res => {
+        this.menu = res;
+        FEATURES_ITEMS.map(x => this.menu.push(x));
+      }
     );
-
-    // this.menu = this.categoryService.get().pipe(
-    //   map(x =>
-    //     x.map(y => {
-    //       let item = new NbMenuItem();
-    //       item.title = y.name;
-    //       item.icon = y.iconName;
-    //       item.link = `/pages/${y.categoryID}`;
-    //       return item;
-    //     })
-
-    //   )
-
-
-    // )
 
   }
 
