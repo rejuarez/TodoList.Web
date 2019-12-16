@@ -1,13 +1,14 @@
 <div class="row">
   <div class="col-md-12">
-    <nb-card class="inline-form-card">
-      <nb-card-header>Inline form</nb-card-header>
+    <nb-card class="inline-form-card" [nbSpinner]="loading" nbSpinnerStatus="primary">
+      <nb-card-header>Create a new task</nb-card-header>
       <nb-card-body>
-        <form class="form-inline">
-          <input type="text" nbInput fullWidth placeholder="Jane Doe">
-          <input type="text" nbInput fullWidth placeholder="Email">
-          <nb-checkbox>Remember me</nb-checkbox>
-          <button type="submit" nbButton status="primary">Submit</button>
+
+        <form class="form-inline" [formGroup]="formGroup">
+          <input type="text" nbInput fullWidth placeholder="Description" formControlName="description" required>
+          <input type="file" #myInput nbInput (change)="onFileChange($event.target.files)" />
+          <button type="submit" #myInput nbButton status="primary" (click)="submit()"
+            [disabled]="formGroup.invalid">Add</button>
         </form>
       </nb-card-body>
     </nb-card>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NbMenuItem } from '@nebular/theme';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Category } from './@core/models/category';
@@ -11,25 +12,40 @@ import { CategoryService } from './@core/services/category.service';
 })
 export class AppComponent implements OnInit {
   title = 'TodoList';
-  menu: Observable<any> = new Observable<any[]>();
+  menu: Observable<NbMenuItem[]> = new Observable<NbMenuItem[]>();
 
   constructor(private categoryService: CategoryService) {
 
   }
 
   ngOnInit(): void {
-
     this.menu = this.categoryService.get().pipe(
       map((clients: Category[]) => clients.map(
         x => {
-          return {
-            title: x.name,
-            icon: x.iconName,
-            link: ''
-          };
+          let item = new NbMenuItem();
+          item.title = x.name;
+          item.icon = x.iconName;
+          item.link = `/pages/${x.categoryID}`;
+          return item;
         }
-      ))
+      ));
     );
+
+    // this.menu = this.categoryService.get().pipe(
+    //   map(x =>
+    //     x.map(y => {
+    //       let item = new NbMenuItem();
+    //       item.title = y.name;
+    //       item.icon = y.iconName;
+    //       item.link = `/pages/${y.categoryID}`;
+    //       return item;
+    //     })
+
+    //   )
+
+
+    // )
+
   }
 
 

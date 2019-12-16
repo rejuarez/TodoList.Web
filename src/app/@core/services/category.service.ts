@@ -12,4 +12,9 @@ export class CategoryService extends BaseService {
     return this.httpClient.get<Category[]>
       (`${this.APIEndpoint}category`);
   }
+
+  public getById(id): Observable<Category> {
+    return this.httpClient.get<Category>
+      (`${this.APIEndpoint}category/${id}`);
+  }
 }

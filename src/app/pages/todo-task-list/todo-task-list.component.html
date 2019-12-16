@@ -1,0 +1,19 @@
+<app-todo-task-add [CategoryID]="CategoryID" (todoTaskAddedEvent)="todoTaskAdded()"></app-todo-task-add>
+
+<div class="lists row">
+  <div class="col-md-12">
+    <nb-card class="list-card" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary">
+      <nb-card-header>
+        <h5 class="grid-h">{{(Category$ | async)?.name}}</h5>
+      </nb-card-header>
+      <nb-card-body>
+        <nb-list>
+          <nb-list-item *ngFor="let TodoTask of TodoTasks">
+            <nb-checkbox status="success" (change)="clickCheck($event, TodoTask)">{{ TodoTask.description }}
+            </nb-checkbox>
+
+          </nb-list-item>
+        </nb-list>
+      </nb-card-body>
+    </nb-card>
+  </div>

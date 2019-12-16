@@ -17,7 +17,7 @@ import { PagesModule } from './pages/pages.module';
     NbEvaIconsModule,
     NbIconModule,
     NbLayoutModule,
-    ThemeModule,
+    ThemeModule.forRoot(),
     NbSidebarModule.forRoot(), // NbSidebarModule.forRoot(), //if this is your app.module
     NbButtonModule,
     NbMenuModule.forRoot(),
