@@ -1,6 +1,6 @@
 # TodoList
 
-Este repositorio es el frontend de un proyecto para administrar un TODO list (listado de tareas por hacer).
+Este repositorio es el frontend de un proyecto para administrar un TODO list (listado de tareas por hacer). El desarrollo esta basado en Angular 8, usando paquetes tales como Material Design components for Angular, Nebular, Bootstrap, etc.
 
 ### Requisitos
 - Node                              v12.13.0
