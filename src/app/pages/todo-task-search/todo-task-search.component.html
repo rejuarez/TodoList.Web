@@ -5,11 +5,12 @@
       <nb-card-body>
         <form>
           <div class="form-group">
-            <input type="text" nbInput fullWidth placeholder="Description" [(checked)]="Description">
+            <input type="text" nbInput fullWidth placeholder="Description" [(ngModel)]="Description"
+              [ngModelOptions]="{standalone: true}">
           </div>
           <div class="form-group">
             <nb-select fullWidth placeholder="Category" [(selected)]="Category">
-              <nb-option></nb-option>
+              <nb-option [value]="null"></nb-option>
               <nb-option *ngFor="let category of CategoryItems" [value]="category.categoryID"> {{ category.name }}
               </nb-option>
             </nb-select>
@@ -19,6 +20,44 @@
           </div>
           <button type="submit" nbButton status="danger" (click)="Search()">Search</button>
         </form>
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary">
+      <!-- <nb-card-header>
+        Data
+      </nb-card-header> -->
+
+      <nb-card-body>
+        <table mat-table [dataSource]="ResultItems" matSort matSortActive="created" matSortDisableClear
+          matSortDirection="desc">
+          <ng-container matColumnDef="created">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+              Created
+            </th>
+            <td mat-cell *matCellDef="let row" [ngStyle]="row.isActive?{'color':'black'} : {'color': '#CDCDCD'}">
+              {{row.creationDate | date}}</td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let row" [ngStyle]="row.isActive?{'color':'black'} : {'color': '#CDCDCD'}">
+              {{row.description}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef>category</th>
+            <td mat-cell *matCellDef="let row">{{row.categoryName}}</td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let row">
+              <Button (click)="download(row.todoTaskID)"> descargar</Button></td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
       </nb-card-body>
     </nb-card>
   </div>

@@ -9,7 +9,8 @@
       <nb-card-body>
         <nb-list>
           <nb-list-item *ngFor="let TodoTask of TodoTasks">
-            <nb-checkbox status="success" (change)="clickCheck($event, TodoTask)">{{ TodoTask.description }}
+            <nb-checkbox status="success" nbTooltip="Mark as Completed" (change)="clickCheck($event, TodoTask)">
+              {{ TodoTask.description }}
             </nb-checkbox>
 
           </nb-list-item>

@@ -57,6 +57,12 @@ export class TodoTaskAddComponent implements OnInit {
   }
 
   onFileChange(files: FileList) {
+    if (files && files[0].size > 10000000) {
+      console.log(files[0].size);
+      this.formGroup.controls.document.setErrors({ SizeError: true });
+      return;
+    }
+
     if (files && files[0].size > 0) {
       this.formGroup.patchValue({
         document: files[0]

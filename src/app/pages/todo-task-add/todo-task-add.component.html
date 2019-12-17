@@ -9,6 +9,8 @@
           <input type="file" #myInput nbInput (change)="onFileChange($event.target.files)" />
           <button type="submit" #myInput nbButton status="primary" (click)="submit()"
             [disabled]="formGroup.invalid">Add</button>
+          <nb-alert *ngIf="formGroup.controls['document'].invalid && formGroup.get('document').errors.SizeError"
+            status="danger">The max file size to upload each time is limited to 10MB</nb-alert>
         </form>
       </nb-card-body>
     </nb-card>

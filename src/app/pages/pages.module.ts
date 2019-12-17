@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NbActionsModule, NbButtonModule, NbCardModule, NbCheckboxModule, NbDatepickerModule, NbIconModule, NbInputModule, NbListModule, NbRadioModule, NbSelectModule, NbSpinnerModule, NbToastrModule, NbToggleModule, NbUserModule } from '@nebular/theme';
+import { MatTableModule } from '@angular/material';
+import { NbActionsModule, NbAlertModule, NbButtonModule, NbCardModule, NbCheckboxModule, NbDatepickerModule, NbIconModule, NbInputModule, NbListModule, NbRadioModule, NbSelectModule, NbSpinnerModule, NbToastrModule, NbToggleModule, NbTooltipModule, NbUserModule } from '@nebular/theme';
 //import { NbCardModule, NbCheckboxModule } from '@nebular/theme';
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesRoutingModule } from './pages-routing.module';
@@ -10,11 +11,14 @@ import { TodoTaskListComponent } from './todo-task-list/todo-task-list.component
 import { TodoTaskSearchComponent } from './todo-task-search/todo-task-search.component';
 
 
+
+
 @NgModule({
   declarations: [TodoTaskAddComponent, TodoTaskListComponent, TodoTaskSearchComponent],
   imports: [
     CommonModule,
     NbCardModule,
+    NbAlertModule,
     NbCheckboxModule,
     PagesRoutingModule,
     ThemeModule,
@@ -32,6 +36,8 @@ import { TodoTaskSearchComponent } from './todo-task-search/todo-task-search.com
     ReactiveFormsModule,
     NbSpinnerModule,
     NbToggleModule,
+    MatTableModule,
+    NbTooltipModule,
     NbToastrModule.forRoot()
 
   ]

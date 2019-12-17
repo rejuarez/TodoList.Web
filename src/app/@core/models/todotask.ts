@@ -3,4 +3,11 @@ export interface TodoTask {
     categoryID: number;
     description: string;
     document: File;
+    categoryName: string;
+    creationDate: Date;
+    lastModifiedDate: Date;
+    isActive: boolean;
+    fileContent: string;
+    fileContentType: string;
+    fileName: string;
 }

@@ -29,4 +29,9 @@ export class TodoTaskService extends BaseService {
   public Update(data: TodoTask): Observable<TodoTask> {
     return this.httpClient.put<TodoTask>(`${this.APIEndpoint}TodoTask/${data.todoTaskID}`, data);
   }
+
+  public getById(id): Observable<TodoTask> {
+    return this.httpClient.get<TodoTask>
+      (`${this.APIEndpoint}TodoTask/${id}`);
+  }
 }

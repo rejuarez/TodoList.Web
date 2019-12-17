@@ -29,7 +29,8 @@ export class TodoTaskListComponent implements OnInit {
   }
 
   clickCheck($event, TodoTask) {
-    TodoTask.isActive = $event.target.checked;
+
+    TodoTask.isActive = !$event.target.checked;
     this.todoTaskService.Update(TodoTask).subscribe(
       res => {
         console.log(res);
