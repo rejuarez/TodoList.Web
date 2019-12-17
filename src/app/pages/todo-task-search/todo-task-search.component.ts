@@ -31,11 +31,10 @@ export class TodoTaskSearchComponent implements OnInit {
     this.todoTaskService.Get(this.Category, this.Description, this.ShowInactives === true ? null : true).subscribe(
       res => {
         this.ResultItems = res;
-        console.log(this.ResultItems);
         this.loading = false;
       },
       () => this.loading = false
-    )
+    );
   }
   download(id) {
 
@@ -45,8 +44,9 @@ export class TodoTaskSearchComponent implements OnInit {
         const blob = base64StringToBlob(res.fileContent);
         saveAs(blob, res.fileName);
         this.loading = false;
+        return false;
       },
       () => this.loading = false
-    )
+    );
   }
 }

@@ -38,7 +38,7 @@ export class TodoTaskAddComponent implements OnInit {
       this.loading = true;
       this.todoTaskService.create(this.prepareSaveUser()).subscribe(
         res => {
-          this.showToast('success', '', 'The task was created successfully')
+          this.showToast('success', '', 'The task was created successfully');
           this.formGroup.reset();
 
           this.myInputVariable.nativeElement.value = '';
@@ -48,17 +48,16 @@ export class TodoTaskAddComponent implements OnInit {
           }
         },
         err => {
-          this.showToast('danger', '', err.statusText)
+          this.showToast('danger', '', err.statusText);
           this.formGroup.reset();
           this.loading = false;
         }
-      )
+      );
     }
   }
 
   onFileChange(files: FileList) {
     if (files && files[0].size > 10000000) {
-      console.log(files[0].size);
       this.formGroup.controls.document.setErrors({ SizeError: true });
       return;
     }

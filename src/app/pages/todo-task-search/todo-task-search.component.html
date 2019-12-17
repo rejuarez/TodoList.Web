@@ -24,10 +24,6 @@
     </nb-card>
 
     <nb-card [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary">
-      <!-- <nb-card-header>
-        Data
-      </nb-card-header> -->
-
       <nb-card-body>
         <table mat-table [dataSource]="ResultItems" matSort matSortActive="created" matSortDisableClear
           matSortDirection="desc">
@@ -47,13 +43,15 @@
           </ng-container>
 
           <ng-container matColumnDef="category">
-            <th mat-header-cell *matHeaderCellDef>category</th>
+            <th mat-header-cell *matHeaderCellDef>Category</th>
             <td mat-cell *matCellDef="let row">{{row.categoryName}}</td>
           </ng-container>
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let row">
-              <Button (click)="download(row.todoTaskID)"> descargar</Button></td>
+              <a (click)="download(row.todoTaskID)" style="cursor: pointer;">
+                <nb-icon icon="arrow-circle-down-outline"></nb-icon> {{row.fileName}}
+              </a></td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

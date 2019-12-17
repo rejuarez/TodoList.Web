@@ -33,10 +33,9 @@ export class TodoTaskListComponent implements OnInit {
     TodoTask.isActive = !$event.target.checked;
     this.todoTaskService.Update(TodoTask).subscribe(
       res => {
-        console.log(res);
         this.loadList();
       }
-    )
+    );
   }
 
   todoTaskAdded() {
