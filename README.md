@@ -1,6 +1,6 @@
 # TodoList
 
-Este repositorio es el frontend de un proyecto para administrar un TODO list (listado de tareas por hacer). ng version
+Este repositorio es el frontend de un proyecto para administrar un TODO list (listado de tareas por hacer).
 
 ### Requisitos
 - Node                              v12.13.0
