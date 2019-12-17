@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NbMenuItem } from '@nebular/theme';
 import { map } from 'rxjs/operators';
 import { FEATURES_ITEMS } from './@core/data/featuresItems';
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit {
   title = 'TodoList';
   menu: NbMenuItem[] = [];
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService, private router: Router) {
 
   }
 
@@ -35,7 +36,7 @@ export class AppComponent implements OnInit {
         FEATURES_ITEMS.map(x => this.menu.push(x));
       }
     );
-
+    this.router.navigate(['/pages/search']);
   }
 
 
